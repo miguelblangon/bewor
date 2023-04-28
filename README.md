@@ -29,5 +29,6 @@
 #### ENTREGAR PRUEBA
 
  - Hacer fork del repositorio.
- - Realizar los ejercicios.
- - Solicitar un merge request al repositorio original.
+ - Antes de realizar ningún cambio, suba el código a un repositorio público de su propiedad indicando como comentario del commit "Initial commit".
+ - Realizar los ejercicios y subir los cambios a su repositorio.
+ - Cuando la finalice, envie un email a pbodelon@vocces.com indicando el link de su repositorio.
