@@ -16,6 +16,9 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
+            $table->string('email')->unique();
+            $table->string('address');
+            $table->enum('status', ['inactive', 'active'])->default('inactive');
             $table->timestamps();
         });
     }

@@ -2,6 +2,8 @@
 
 namespace Vocces\Company\Domain;
 
+use Vocces\Company\Domain\ValueObject\CompanyAddress;
+use Vocces\Company\Domain\ValueObject\CompanyEmail;
 use Vocces\Company\Domain\ValueObject\CompanyId;
 use Vocces\Company\Domain\ValueObject\CompanyName;
 use Vocces\Company\Domain\ValueObject\CompanyStatus;
@@ -18,7 +20,14 @@ final class Company implements Arrayable
      * @var \Vocces\Company\Domain\ValueObject\CompanyName
      */
     private CompanyName $name;
-
+     /**
+     * @var \Vocces\Company\Domain\ValueObject\CompanyAddress
+     */
+    private CompanyAddress $address;
+    /**
+     * @var \Vocces\Company\Domain\ValueObject\CompanyEmail
+     */
+    private CompanyEmail $email;
     /**
      * @var \Vocces\Company\Domain\ValueObject\CompanyStatus
      */
@@ -27,10 +36,14 @@ final class Company implements Arrayable
     public function __construct(
         CompanyId $id,
         CompanyName $name,
+        CompanyAddress $address,
+        CompanyEmail $email,
         CompanyStatus $status
     ) {
         $this->id = $id;
         $this->name = $name;
+        $this->address = $address;
+        $this->email = $email;
         $this->status = $status;
     }
 
@@ -43,6 +56,14 @@ final class Company implements Arrayable
     {
         return $this->name;
     }
+    public function address(): CompanyAddress
+    {
+        return $this->address;
+    }
+    public function email(): CompanyEmail
+    {
+        return $this->email;
+    }
 
     public function status(): CompanyStatus
     {
@@ -54,6 +75,8 @@ final class Company implements Arrayable
         return [
             'id'       => $this->id()->get(),
             'name'     => $this->name()->get(),
+            'address'     => $this->address()->get(),
+            'email'     => $this->email()->get(),
             'status'   => $this->status()->name(),
         ];
     }

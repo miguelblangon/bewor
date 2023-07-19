@@ -7,7 +7,6 @@ use Illuminate\Support\Str;
 use Vocces\Company\Domain\Company;
 use Vocces\Company\Application\CompanyCreator;
 use Tests\Vocces\Company\Infrastructure\CompanyRepositoryFake;
-
 final class CreateANewCompanyTest extends TestCase
 {
     /**
@@ -24,16 +23,20 @@ final class CreateANewCompanyTest extends TestCase
         $testCompany = [
             'id'     => Str::uuid(),
             'name'   => $faker->name,
-            'status' => 'inactive',
+            'address'=> $faker->address,
+            'email'=>   $faker->email,
+            'status' =>'inactive'
         ];
 
         /**
          * Actions
          */
-        $creator = new CompanyCreator(new CompanyRepositoryFake());
+        $creator = new CompanyCreator(new CompanyRepositoryFake() );
         $company = $creator->handle(
             $testCompany['id'],
-            $testCompany['name']
+            $testCompany['name'],
+            $testCompany['address'],
+            $testCompany['email']
         );
 
         /**
