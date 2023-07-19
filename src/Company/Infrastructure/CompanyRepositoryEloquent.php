@@ -16,7 +16,17 @@ class CompanyRepositoryEloquent implements CompanyRepositoryInterface
         ModelsCompany::Create([
             'id'     => $company->id(),
             'name'   => $company->name(),
-            'status' => $company->status(),
+            'address'   => $company->address(),
+            'email'   => $company->email(),
+            'status' => $company->status()->name(),
         ]);
+    }
+    public function updateStatus(string $companyId): void
+    {
+        ModelsCompany::findOrFail($companyId)->update([ 'status' =>'active']);
+    }
+    public function index()
+    {
+        return ModelsCompany::all();
     }
 }

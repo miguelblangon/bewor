@@ -7,7 +7,7 @@ use Vocces\Company\Domain\CompanyRepositoryInterface;
 
 class CompanyRepositoryFake implements CompanyRepositoryInterface
 {
-    public bool $callMethodCreate = false;
+    public bool $callMethodCreate = false, $callMethodUpdate=false, $callMethodIndex=false ;
 
     /**
      * @inheritdoc
@@ -15,5 +15,13 @@ class CompanyRepositoryFake implements CompanyRepositoryInterface
     public function create(Company $company): void
     {
         $this->callMethodCreate = true;
+    }
+    public function updateStatus(string $companyId): void
+    {
+        $this->callMethodUpdate = true;
+    }
+    public function index()
+    {
+        $this->callMethodIndex = true;
     }
 }
